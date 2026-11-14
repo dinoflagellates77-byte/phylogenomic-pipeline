@@ -9,7 +9,8 @@ st.set_page_config(page_title="Phylogenomic Pipeline with Bootstrap", page_icon=
 st.title("🧬 Full Phylogenomic Pipeline with Bootstrap Analysis")
 st.caption("Biopython-based: FASTA → alignment → QC → tree building → bootstrap support → downloads")
 
-SAMPLE = Path(__file__).parent / "sample_data" / "sample_dna.fasta"
+_found = list(Path(__file__).parent.rglob("sample_dna.fasta"))
+SAMPLE = _found[0] if _found else Path("missing")
 
 # ------------------------------------------------------------ sidebar
 with st.sidebar:
